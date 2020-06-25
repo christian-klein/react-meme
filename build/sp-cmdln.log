@@ -1,0 +1,91 @@
+2020-06-24 16:57:01 -- Script Application command line utility version: 8.5
+
+2020-06-24 16:57:01 -- Script Application command line utility build number: 20190928-2258
+
+2020-06-24 16:57:01 -- Home folder: C:\Program Files\HCL\sp_cmdln
+
+2020-06-24 16:57:01 -- Java environment: 
+
+	java.home = C:\Program Files\Java\jdk-13.0.2
+	java.vendor = Oracle Corporation
+	java.version = 13.0.2
+
+2020-06-24 16:57:01 -- Effective configuration properties: 
+
+	contentRoot = F:\HCL\dxdashboard\script/react-meme
+	datepushed = 2020-06-24T21:29:51.897Z
+	excludes = [^bin$, ^lib$, ^src$, ^node_modules$, ^\.classpath$, ^\.project$, ^\..*ignore$, ^sp-config.json$, ^sp-cmdln.log$, ^sp.bat$, ^sp.sh$]
+	portalPassword = ********
+	portalUser = wpsadmin
+	scriptPortletServer = http://localhost:10039
+	wcmContentName = react-meme
+	wcmSiteArea = Script Portlet Library/Script Portlet Applications/
+
+2020-06-24 16:57:01 -- Begin content push to Portal.
+
+2020-06-24 16:57:02 -- Accept-Language: en-US,en
+
+2020-06-24 16:57:02 -- Push URL: POST http://localhost:10039/wps/mycontenthandler?uri=scriptportlet%3Anull HTTP/1.1
+
+2020-06-24 16:57:02 -- Virtual Portal Context: null
+
+2020-06-24 16:57:02 -- Project Context: null
+
+2020-06-24 16:57:02 -- WCM content ID: null
+
+2020-06-24 16:57:02 -- WCM Content Path: Script Portlet Library/Script Portlet Applications/react-meme
+
+2020-06-24 16:57:02 -- WCM Content Title: null
+
+2020-06-24 16:57:02 -- Main HTML file: index.html
+
+2020-06-24 16:57:02 -- Archive file: 
+
+	C:\Users\rohir\AppData\Local\Temp\sp-content-7846795384058278605.zip
+	(24,461 bytes in 8 files) 
+
+	App.js
+	Header.js
+	index.html
+	index.js
+	like_button.js
+	logo.png
+	memegen.css
+	MemeGenerator.js
+22020-06-24 16:57:17 -- Response status: HTTP/1.1 200 OK
+
+2020-06-24 16:57:17 -- Content-Type: application/json; charset=UTF-8
+
+2020-06-24 16:57:17 -- Effective character set of body: UTF-8
+
+2020-06-24 16:57:17 -- Body content: 
+
+{  "results":{ "status":"error", "message":"Message: {2a73f5b4-6fd9-4b5a-82cf-7c499b218cd4, com.aptrix.pluto.content.Content} has been modified prior to this operation., Cause: javax.jcr.StaleValueException: RT0002E: Error while calling a function updateItems of PLS data manager: RT0002E: Error while calling a function updateItems of PLS data manager"} }
+
+2020-06-24 16:57:17 -- Target authentication state: SUCCESS
+
+2020-06-24 16:57:17 -- Target authentication scheme: BASIC
+
+2020-06-24 16:57:17 -- Target authentication credentials: [principal: wpsadmin]
+
+2020-06-24 16:57:17 -- EJPRC0028E: Application push failed with one or more errors.
+
+pache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:214)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:160)
+	at com.ibm.wps.scriptportlet.cmdln.PushCommand.invoke(PushCommand.java:219)
+	at com.ibm.wps.scriptportlet.cmdln.CommandLine.main(CommandLine.java:141)
+
+
+
