@@ -108,5 +108,7 @@ You can edit the scrip application on the portal server, and since we are not us
 
 All JSX code is in the src folder of the project and the babel watcher is converting it into the javascript the browser can actually handle, with the output directory being the build directory.
 
+## Attribution
+The portlet app code is based on the freeCodeCap.org React course on [youTube](https://youtu.be/DLX62G4lc44). Check it out if you are new to React since it gives a great introduction to core React concepts.
 
 
