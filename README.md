@@ -3,9 +3,27 @@
 ## Overview
 This example app shows how React can be used in Script App portlets. It uses DX modular themes aggregator capability to provide React and ReactDOM.
 
-Babel watch is used to pre compile the JSX code into JS and it in conjunction with Web Developer Dashboard for DX supplies the development pipeline into HCL DX.
+Webpack is used to package the React components and create a build folder. I am using Windows symbolic links to map the build folder to the Web Developer Dashboard. This would be the same approach on Linux or MacOS using ln instead of mklink.
 
-The example uses the HCL DX 9.5 docker container but any DX instance can be used. I am also using Windows symbolic links here to map the build folder to the Web Developer Dashboard. This would be the same approach on Linux or MacOS using ln instead of mklink.
+The proect structure is as follows:
+
+- **build**
+    - _Output folder. Symlinked to the Web Deveopler Dashboard script folder location._
+- **src**
+    - **assets**
+        - _Images etc._
+    - **css**
+        - _CSS Files_
+    - **components**
+        - _React Components_
+    - sp-config.json < _HCL DX Web Developer Dashboard configuration_
+    - vendor.js < _Load 3rd party libraries here_
+
+Run `npm start` to start a local Webpack dev server. Alternatively you can use the run option in the HCL DX Web Developer Dashboard.
+
+Run `npm run build` to build to the build folder. If the folder is linked into the script folder of the Dashoard and watch is enabled on the folder in the Dashboard, changes will be pushed into the configured DX server automatically. 
+
+The example uses the HCL DX 9.5 docker container but any DX instance can be used. 
 
 ## Setup
 
@@ -61,9 +79,7 @@ The example uses the HCL DX 9.5 docker container but any DX instance can be used
     - Run the mklink command.
       
       ```mklink /D C:\HCL\dxdashboard\script\react-meme C:\HCL\dxdashboard\dev\react-meme\build```
-9. Run Babel in watch mode using npx from the root of the project folder (where package.json is located)
-
-    ```npx babel --watch src --out-dir ./build --presets react-app/prod```
+9. Run `npm run build` to build to the build folder. If the folder is linked into the script folder of the Dashoard and watch is enabled on the folder in the Dashboard, changes will be pushed into the configured DX server automatically. 
 10. Add React and ReactDOM to the theme you want to use - here we will use the default Portal 8.5 Theme.
     - In the DX Web Developer Dashboard go to Themes and hit Get Themes. (The images show an already configured setup) 
     ![web developer dashboard themes](./img/wdd-themes-1.png)
@@ -89,24 +105,26 @@ The example uses the HCL DX 9.5 docker container but any DX instance can be used
     ![web developer dashboard themes](./img/wdd-themes-9.png)
     - Save your change and push the updates to the theme to the server.
     - In the DX Web Developer Dashboard go to Script Applications and hit refresh. Since you linked the build folder into the scripts folder in step 8, you should now see the react-meme application.
-    - Script Applications are stored as content in the CMS, and the sp-config.json file in the build folder configures the DX Web Developer Dashboard appropriately. See the documentation on [command line push support](https://help.hcltechsw.com/digital-experience/8.5/script-portlet/cmd_line_push_cmd.html) for more information.
+    - Script Applications are stored as content in the CMS, and the sp-config.json file in the src folder configures the DX Web Developer Dashboard appropriately. See the documentation on [command line push support](https://help.hcltechsw.com/digital-experience/8.5/script-portlet/cmd_line_push_cmd.html) for more information.
     - You can now push the application to the server using the push option.
     ![web developer dashboard themes](./img/wdd-script-1.png)
     - Create a new page in DX and choose the React profile for it in the advanced page settings. You should see the react-meme application listed under Script Applications. Add it to the page and exit edit mode.
     ![web developer dashboard themes](./img/wdd-portlet-1.png)
-    - To edit the code, click watch in the Web Developer Dashboard and run babel in watch mode using npx
+    - Edit the code, click watch in the Web Developer Dashboard and run `npm run build`. If you have watch enabled in the Developer Dashboard, changes will be synchronized to the server.
     
-        ```npx babel --watch src --out-dir ./build --presets react-app/prod``` 
-    
-        from the root of the project.
-
 **Notes:**
 
-All static content such as CSS files, the sp-config.json, images etc. must be in the build folder since this is really our script application.
+You can edit the scrip application on the portal server, but since we are  a packager/minifier, you may want to change the webpack.prod.js file before debugging inside DX. Change:
 
-You can edit the scrip application on the portal server, and since we are not using a packager/minifier, all code is there (non JSX).
+    mode: "production",
+    
+to
+    
+    mode: "development",
+    devtool: "none",
 
-All JSX code is in the src folder of the project and the babel watcher is converting it into the javascript the browser can actually handle, with the output directory being the build directory.
+and remove the `optimization:` section.
+
 
 ## Attribution
 The portlet app code is based on the freeCodeCap.org React course on [youTube](https://youtu.be/DLX62G4lc44). Check it out if you are new to React since it gives a great introduction to core React concepts.
